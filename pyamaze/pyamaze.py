@@ -619,7 +619,12 @@ class maze:
         
         self._LabWidth=26 # Space from the top for Labels
         self._win=Tk()
-        self._win.state('zoomed')
+
+        try:
+            self._win.state('zoomed')
+        except (TclError):
+            self._win.attributes("-zoomed", True)
+        
         self._win.title('PYTHON MAZE WORLD by Learning Orbis')
         
         scr_width=self._win.winfo_screenwidth()
